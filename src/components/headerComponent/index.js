@@ -16,6 +16,7 @@ const HeaderComponent = () => {
     const handleLoginSubmit = async (data) => {
         //call api get response if not alert
         const { status, body } = await loginRequest(data)
+        console.log(status)
         if (status !== 200)
             alert('something is wrong, be sure you are giving the correct credentials')
         else

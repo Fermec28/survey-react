@@ -1,5 +1,5 @@
 import React from 'react'
-import { sruveyActions } from '../Actions/index'
+import { surveyActions } from '../Actions/index'
 import { initialState } from '../constants/index'
 import { surveyReducer } from '../Reducers/index'
 
@@ -13,10 +13,10 @@ function Provider({ children }) {
     isLogin: state.isLogin,
     token: state.token,
     setUser: (value) => {
-      dispatch({ type: sruveyActions.SET_USER, value });
+      dispatch({ type: surveyActions.SET_USER, value });
     },
     reset: () => {
-      dispatch({ type: sruveyActions.RESET });
+      dispatch({ type: surveyActions.RESET });
     }
   };
 
