@@ -9,7 +9,6 @@ const SurveyDetail = () => {
     const handleCreateAnswer = async (questionId, optionId) => {
         const response = await createAnswer(optionId)
         if (response.status === 200) {
-            console.log(questionId)
             const newQuestions = questions.filter((question) => question.id !== questionId)
             setQuestions(newQuestions)
         }
@@ -20,7 +19,6 @@ const SurveyDetail = () => {
         const fetchData = async () => {
             const response = await getSurvey({ id });
             if (response.status === 200) {
-                console.log(response)
                 setQuestions(response.body.questions)
             }
             else

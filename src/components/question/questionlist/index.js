@@ -30,7 +30,6 @@ const QuestionList = ({ id }) => {
             const headers = { token }
             const response = await getSurvey({ headers, id: surveyId });
             if (response.status === 200) {
-                console.log(response)
                 setSurvey(response.body)
                 setQuestions(response.body.questions)
             }

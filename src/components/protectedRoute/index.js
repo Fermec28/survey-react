@@ -4,7 +4,6 @@ import { SurveyContext } from '../../Providers'
 
 const ProtectedRoute = ({ children: Component, ...rest }) => {
   const { isLogin } = useContext(SurveyContext)
-  console.log(isLogin)
   return (
     isLogin ? (
       <Route {...rest} children={Component} />
