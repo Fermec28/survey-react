@@ -1,6 +1,49 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { SurveyContext } from '../../../Providers/index'
 import { getStatistics } from '../../../api/index'
+import Chart from "react-apexcharts";
+
+
+const data = {
+    options: {
+        chart: {
+            id: "basic-bar"
+        },
+        xaxis: {
+            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+    },
+    series: [
+        {
+            name: "series-1",
+            data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+    ]
+};
+
+const buildDataToChart = (question) => {
+    const [categories, data] = question.options.reduce((accu, option) => {
+        const categories_aux = [...accu[0], option.description]
+        const data_aux = [...accu[1], option.count]
+        return [categories_aux, data_aux]
+    }, [[], []])
+    return {
+        options: {
+            chart: {
+                id: "basic-bar"
+            },
+            xaxis: {
+                categories
+            }
+        },
+        series: [
+            {
+                name: "Resultados",
+                data
+            }
+        ]
+    }
+}
 
 const QuestionStatisticCard = ({ question }) => {
     const [showOptions, setShowOptions] = useState(false)
@@ -29,7 +72,12 @@ const QuestionStatisticCard = ({ question }) => {
         <div >
             <p>{question.description}</p>
         </div>
-        {showOptions && "chart"}
+        {showOptions && <Chart
+            options={buildDataToChart(statisticsResult).options}
+            series={buildDataToChart(statisticsResult).series}
+            type="bar"
+            width="500"
+        />}
     </div>)
 
 }
