@@ -10,6 +10,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 function App() {
@@ -18,9 +19,10 @@ function App() {
       <HeaderComponent />
       <Router>
         <Switch>
-          <ProtectedRoute path="/:id/statistics" children={<SurveyStatistics />} />
-          <Route path="/:id" children={<SurveyDetailHandler />} />
-          <ProtectedRoute path="/" children={<SurveysList />} />
+          <ProtectedRoute exact path="/surveys/:id/statistics" children={<SurveyStatistics />} />
+          <Route exact path="/surveys/:id" children={<SurveyDetailHandler />} />
+          <ProtectedRoute exact path="/surveys" children={<SurveysList />} />
+          <Redirect to="/surveys" />
         </Switch>
       </Router>
     </Provider>
