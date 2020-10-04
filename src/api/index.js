@@ -181,3 +181,17 @@ export const createAnswer = async (optionId) => {
     const result = await handleResponse(response);
     return result
 }
+
+export const getStatistics = async ({ headers, link }) => {
+    const url = `${BASE_URL}${link}`
+    const { token } = headers || {};
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': getJwtToken(token)
+        }
+    });
+    const result = await handleResponse(response);
+    return result
+}

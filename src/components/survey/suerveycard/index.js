@@ -22,7 +22,7 @@ const SurveyCard = ({ survey, onDelete, token }) => {
 
     }
 
-    return (<div>
+    return (<div style={surveyCardStyle}>
         <div> <h1>{survey.id}</h1></div>
         <div>
             <p>{survey.description}</p>
@@ -37,3 +37,11 @@ const SurveyCard = ({ survey, onDelete, token }) => {
 }
 
 export default SurveyCard
+
+const surveyCardStyle = {
+    backgroundColor: "aqua",
+    width: "150px",
+    border: "1px solid",
+    margin: "10px",
+    textAlign: "center"
+}

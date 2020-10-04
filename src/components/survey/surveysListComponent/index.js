@@ -47,8 +47,15 @@ const SurveyList = () => {
         <PortalModalView visible={newSurveyModal} onToggle={toogleNewSurveyModal}>
             <NewResource handleSubmit={onCreateSurvey} />
         </PortalModalView>
-        {surveys.map((survey) => <SurveyCard survey={survey} key={survey.id} onDelete={() => onDelete(survey.id)} token={token} />)}
+        <div style={surveysListStyle}>
+            {surveys.map((survey) => <SurveyCard survey={survey} key={survey.id} onDelete={() => onDelete(survey.id)} token={token} />)}
+        </div>
     </div>)
 
 }
 export default SurveyList
+
+const surveysListStyle = {
+    display: "flex",
+    flexWrap: "wrap"
+}
